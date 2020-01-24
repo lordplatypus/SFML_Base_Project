@@ -5,7 +5,7 @@
 using namespace sf;
 using namespace std;
 
-Playscene::Playscene(LP* lp) : lp {lp}
+Playscene::Playscene()
 {
     x = 0;
     y = 0;
@@ -56,6 +56,6 @@ void Playscene::Update()
 
 void Playscene::Draw()
 {
-    lp->DrawCircle(circle);
-    lp->DrawRectangle(rectangle);
+    LP::DrawCircle(circle);
+    LP::DrawRectangle(rectangle);
 }

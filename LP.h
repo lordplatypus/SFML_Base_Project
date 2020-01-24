@@ -10,14 +10,14 @@ class LP
 public:
     LP();
     ~LP();
-    void DrawCircle(CircleShape circle);
-    void DrawCircle(CircleShape circle, int x, int y, Color color, int size);
-    void DrawRectangle(RectangleShape rectangle);
-    void Draw(RenderWindow *window);
+    static void DrawCircle(CircleShape circle);
+    static void DrawCircle(CircleShape circle, int x, int y, Color color, int size);
+    static void DrawRectangle(RectangleShape rectangle);
+    static void Draw(RenderWindow *window);
 
 private:
-    vector<CircleShape> circles;
-    vector<RectangleShape> rectangles;
+    static vector<CircleShape> circles;
+    static vector<RectangleShape> rectangles;
 };
 
 #endif

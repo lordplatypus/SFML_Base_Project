@@ -3,7 +3,7 @@
 #include "Playscene.h"
 #include "Game.h"
 
-Titlescene::Titlescene(LP* lp) : lp {lp}
+Titlescene::Titlescene()
 {
 
 }
@@ -25,7 +25,7 @@ void Titlescene::Update()
 {
     if (Keyboard::isKeyPressed(Keyboard::Z))
     {
-        Game::ChangeScene(new Playscene(lp));
+        Game::ChangeScene(new Playscene());
     }
 }
 

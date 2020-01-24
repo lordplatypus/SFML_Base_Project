@@ -12,7 +12,7 @@ int main()
 {
     RenderWindow window(VideoMode(1080, 720), "game window");
     LP lp;
-    Game game(&lp);
+    Game game;
 
     while (window.isOpen())
     {

@@ -9,7 +9,7 @@ using namespace std;
 class Game
 {
 public:
-    Game(LP* lp);
+    Game();
     ~Game();
     void Init();
     void Update(Event* event);
@@ -18,7 +18,6 @@ public:
     static void ChangeScene(Scene* newScene);
 
 private:
-    LP* lp;
     static Scene* scene;
     // CircleShape circle;
     // RectangleShape rectangle;

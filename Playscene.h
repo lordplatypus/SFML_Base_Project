@@ -9,14 +9,13 @@ using namespace std;
 class Playscene : public Scene
 {
 public:
-    Playscene(LP* lp);
+    Playscene();
     ~Playscene() override;
     void Init() override;
     void Update() override;
     void Draw() override;
 
 private:
-    LP* lp;
     CircleShape circle;
     RectangleShape rectangle;
     Vector2<float> rectangleSize;

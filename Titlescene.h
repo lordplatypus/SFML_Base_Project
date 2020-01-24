@@ -6,14 +6,13 @@
 class Titlescene : public Scene
 {
 public:
-    Titlescene(LP* lp);
+    Titlescene();
     ~Titlescene() override;
     void Init() override;
     void Update() override;
     void Draw() override;
 
 private:
-    LP* lp;
 };
 
 #endif

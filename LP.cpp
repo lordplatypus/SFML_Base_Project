@@ -4,6 +4,9 @@
 #include "LP.h"
 using namespace sf;
 
+vector<CircleShape> LP::circles;
+vector<RectangleShape> LP::rectangles;
+
 LP::LP()
 {
 }

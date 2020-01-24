@@ -7,9 +7,9 @@ using namespace sf;
 
 Scene* Game::scene;
 
-Game::Game(LP* lp) : lp {lp}
+Game::Game()
 {
-    scene = new Titlescene(lp);
+    scene = new Titlescene();
     // x = 0;
     // y = 0;
     // circle.setRadius(100);
