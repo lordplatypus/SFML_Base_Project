@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Titlescene.h"
-#include "Playscene.h"
-#include "Game.h"
+#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Titlescene.h"
+#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Playscene.h"
+#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Game.h"
 
 Titlescene::Titlescene()
 {
@@ -10,11 +10,7 @@ Titlescene::Titlescene()
 
 Titlescene::~Titlescene()
 {
-    cout << "Destroyed Titlescene" << endl;
 }
-
-// Scene::~Scene()
-// {}
 
 void Titlescene::Init()
 {

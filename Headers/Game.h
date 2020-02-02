@@ -12,18 +12,13 @@ public:
     Game();
     ~Game();
     void Init();
-    void Update(Event* event);
+    void Update();
     void Draw();
     void ChangeScene();
     static void ChangeScene(Scene* newScene);
 
 private:
     static Scene* scene;
-    // CircleShape circle;
-    // RectangleShape rectangle;
-    // Vector2<float> rectangleSize;
-    // int x;
-    // int y;
 };
 
 #endif
