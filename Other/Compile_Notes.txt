@@ -1,4 +1,4 @@
 cd /home/bryce/Documents/SFML/SFML_First_Project/Source/
-g++ -g -c main.cpp LP.cpp Game.cpp Titlescene.cpp Playscene.cpp 
-g++ main.o LP.o Game.o Titlescene.o Playscene.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
+g++ -g -c main.cpp LP.cpp Game.cpp Titlescene.cpp Playscene.cpp Input.cpp
+g++ main.o LP.o Game.o Titlescene.o Playscene.o Input.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
 ./sfml-app

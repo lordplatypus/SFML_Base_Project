@@ -5,10 +5,10 @@
 using namespace std;
 using namespace sf;
 
-int LP::key = -1;
-stack<int> LP::thingsToDraw;
-map<int, RectangleShape> LP::rectangleMap;
-map<int, CircleShape> LP::circleMap;
+int LP::key = -1; //creates keys to use in the below maps
+stack<int> LP::thingsToDraw; //list of ints (keys) used to know what to draw
+map<int, RectangleShape> LP::rectangleMap; //map of rectangles
+map<int, CircleShape> LP::circleMap; //map of circles
 
 LP::LP()
 {
@@ -19,28 +19,26 @@ LP::~LP()
 }
 
 int LP::SetCircle(int x, int y, int radius, sf::Color color)
-{
-    key++;
-    CircleShape temp;
-    temp.setRadius(radius);
-    temp.setPosition(x, y);
-    temp.setFillColor(color);
-    circleMap[key] = temp;
-    return key;
+{//create a new circle and add it to the circle map, return the key
+    key++; //generate new key
+    CircleShape temp; //create circle that will be added to the map
+    temp.setRadius(radius); //set radius
+    temp.setPosition(x, y); //set position
+    temp.setFillColor(color); //set color
+    circleMap[key] = temp; //add circle to the map
+    return key; //return the key to the newly created circle
 }
 
 void LP::DrawCircle(int key)
-{
+{//adds circle to the list of objects to draw, no changes to the circle need to be made
     thingsToDraw.push(key);
 }
 
 void LP::DrawCircle(int x, int y, int radius, sf::Color color, int key)
-{
-    CircleShape* temp;
-    temp = &circleMap[key];
-    temp->setPosition(x, y);
-    temp->setRadius(radius);
-    temp->setFillColor(color);
+{//adds circle to the list of objects to draw, changes are made to the circle before it is added to the list
+    circleMap[key].setPosition(x, y); //change position
+    circleMap[key].setRadius(radius); //change radius
+    circleMap[key].setFillColor(color); //change color
     thingsToDraw.push(key);
 }
 
@@ -62,30 +60,28 @@ void LP::DrawRectangle(int key)
 
 void LP::DrawRectangle(int x, int y, int size, sf::Color color, int key)
 {
-    RectangleShape* temp;
-    temp = &rectangleMap[key];
-    temp->setPosition(x, y);
-    temp->setSize(Vector2<float>(size, size));
-    temp->setFillColor(color);
+    rectangleMap[key].setPosition(x, y);
+    rectangleMap[key].setSize(Vector2<float>(size, size));
+    rectangleMap[key].setFillColor(color);
     thingsToDraw.push(key);
 }
 
 void LP::Draw(RenderWindow *window)
 {
     if(thingsToDraw.size() > 0)
-    {
-        int numOfThingsToDraw = thingsToDraw.size();
+    {//as long as there are things to draw, run the below code
+        int numOfThingsToDraw = thingsToDraw.size(); //save the num of things to draw
         for (int i = 0; i < numOfThingsToDraw; i++)
         {
             if (circleMap.find(thingsToDraw.top()) != circleMap.end())
-            {
+            {//if the circleMap contains the key draw the circle
                 window->draw(circleMap[thingsToDraw.top()]);
             }
             else if (rectangleMap.find(thingsToDraw.top()) != rectangleMap.end())
-            {
+            {//if the rectangleMap contains the key, draw the rectangle
                 window->draw(rectangleMap[thingsToDraw.top()]);
             }
-            thingsToDraw.pop();
+            thingsToDraw.pop(); //remove the key from the list
         }
     }
 }

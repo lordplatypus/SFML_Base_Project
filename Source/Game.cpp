@@ -3,6 +3,7 @@
 #include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/LP.h"
 #include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Playscene.h"
 #include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Titlescene.h"
+#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Input.h"
 using namespace sf;
 
 Scene* Game::scene;
@@ -23,6 +24,7 @@ void Game::Init()
 
 void Game::Update()
 {
+    //Input::Update();
     scene->Update();
 }
 

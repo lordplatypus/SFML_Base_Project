@@ -23,6 +23,8 @@ private:
     int y;
     int circle;
     int rectangle;
+    int rX = 0;
+    int rY = 300;
 };
 
 #endif
