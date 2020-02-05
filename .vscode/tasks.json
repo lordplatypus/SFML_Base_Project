@@ -1,41 +1,5 @@
 {
-    "version": "2.0.0",
     "tasks": [
-        {
-            "label": "<TASK_NAME>",
-            "type": "shell",
-            "command": "make",
-            "options": {
-                "cwd": "${workspaceRoot}/"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "args": [
-                "all"
-            ],
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "absolute"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
-        },
         {
             "type": "shell",
             "label": "g++ build active file",
@@ -47,8 +11,9 @@
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "/usr/bin"
+                "cwd": "/home/bryce/Documents/SFML/SFML_First_Project/"
             }
         }
-    ]
+    ],
+    "version": "2.0.0"
 }

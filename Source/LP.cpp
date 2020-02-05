@@ -9,15 +9,15 @@ int LP::key = -1; //creates keys to use in the below maps
 stack<int> LP::thingsToDraw; //list of ints (keys) used to know what to draw
 map<int, RectangleShape> LP::rectangleMap; //map of rectangles
 map<int, CircleShape> LP::circleMap; //map of circles
+map<int, Texture> LP::textureMap;
+map<int, Sprite> LP::spriteMap;
 
-LP::LP()
-{
-}
+LP::LP(){}
 
-LP::~LP()
-{
-}
+LP::~LP(){}
 
+
+//Drawing Circles
 int LP::SetCircle(int x, int y, int radius, sf::Color color)
 {//create a new circle and add it to the circle map, return the key
     key++; //generate new key
@@ -42,6 +42,8 @@ void LP::DrawCircle(int x, int y, int radius, sf::Color color, int key)
     thingsToDraw.push(key);
 }
 
+
+//Drawing Rectangles
 int LP::SetRectangle(int x, int y, int size, sf::Color color)
 {
     key++;
@@ -66,6 +68,35 @@ void LP::DrawRectangle(int x, int y, int size, sf::Color color, int key)
     thingsToDraw.push(key);
 }
 
+
+//Drawing Sprites
+int LP::SetTexture(string filePath, int x, int y, int width, int height)
+{
+    key++;
+    Texture temp;
+    temp.loadFromFile(filePath, IntRect(x, y, width, height));
+    textureMap[key] = temp;
+    return key;
+}
+
+int LP::SetSprite(int x, int y, int textureKey)
+{
+    key++;
+    Sprite temp;
+    temp.setTexture(textureMap[textureKey]);
+    temp.setPosition(x, y);
+    spriteMap[key] = temp;
+    return key;
+}
+
+void LP::DrawSprite(int x, int y, int key)
+{
+    spriteMap[key].setPosition(x, y);
+    thingsToDraw.push(key);
+}
+
+
+//Draw
 void LP::Draw(RenderWindow *window)
 {
     if(thingsToDraw.size() > 0)
@@ -80,6 +111,10 @@ void LP::Draw(RenderWindow *window)
             else if (rectangleMap.find(thingsToDraw.top()) != rectangleMap.end())
             {//if the rectangleMap contains the key, draw the rectangle
                 window->draw(rectangleMap[thingsToDraw.top()]);
+            }
+            else if (spriteMap.find(thingsToDraw.top()) != spriteMap.end())
+            {
+                window->draw(spriteMap[thingsToDraw.top()]);
             }
             thingsToDraw.pop(); //remove the key from the list
         }

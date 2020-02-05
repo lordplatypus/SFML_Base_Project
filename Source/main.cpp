@@ -31,11 +31,6 @@ int main()
             {
                 isRunning = false;
             }
-
-            // if (event.key.code == Input::ReturnKeyPressed())
-            // {
-            //     Input::Update();
-            // }
         }
         Input::Update(&event);
         game.Update();

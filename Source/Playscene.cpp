@@ -3,6 +3,7 @@
 #include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/LP.h"
 #include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Playscene.h"
 #include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Input.h"
+#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/LoadImage.h"
 using namespace sf;
 using namespace std;
 
@@ -10,15 +11,9 @@ Playscene::Playscene()
 {
     x = 0;
     y = 0;
-    // circle.setRadius(100);
-    // circle.setFillColor(Color::Green);
-    // rectangleSize.x = 10;
-    // rectangleSize.y = 10;
-    // rectangle.setSize(rectangleSize);
-    // rectangle.setFillColor(Color::Blue);
-    // rectangle.setPosition(0, 300);
-    circle = LP::SetCircle(x, y, 100, Color::Green);
+    //circle = LP::SetCircle(x, y, 100, Color::Green);
     rectangle = LP::SetRectangle(rX, rY, 50, Color::Blue);
+    sprite = LP::SetSprite(x, y, LoadImage::wolf);
 }
 
 Playscene::~Playscene()
@@ -36,7 +31,7 @@ void Playscene::Update()
     {
         x -= 10;
     }
-    else if (Input::GetButtonDown(Keyboard::Right))
+    else if (Input::GetButton(Keyboard::Right))
     {
         x += 10;
     }
@@ -54,6 +49,7 @@ void Playscene::Update()
 
 void Playscene::Draw()
 {
-    LP::DrawCircle(x, y, 100, Color::Green, circle);
+    //LP::DrawCircle(x, y, 100, Color::Green, circle);
     LP::DrawRectangle(rX, rY, 50, Color::Blue, rectangle);
+    LP::DrawSprite(x, y, sprite);
 }

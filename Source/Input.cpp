@@ -26,7 +26,8 @@ void Input::Update(Event* event)
 
 bool Input::GetButton(Keyboard::Key buttonID)
 {
-
+    if (currentState == buttonID) return true;
+    else return false;
 }
 
 bool Input::GetButtonDown(Keyboard::Key buttonID)

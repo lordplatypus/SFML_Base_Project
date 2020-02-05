@@ -16,13 +16,11 @@ public:
     void Draw() override;
 
 private:
-    //CircleShape circle;
-    //RectangleShape rectangle;
-    //Vector2<float> rectangleSize;
     int x;
     int y;
     int circle;
     int rectangle;
+    int sprite;
     int rX = 0;
     int rY = 300;
 };
