@@ -13,7 +13,8 @@ Playscene::Playscene()
     y = 0;
     //circle = LP::SetCircle(x, y, 100, Color::Green);
     rectangle = LP::SetRectangle(rX, rY, 50, Color::Blue);
-    sprite = LP::SetSprite(x, y, LoadImage::wolf);
+    //sprite = LP::SetSprite(x, y, LoadImage::wolf);
+    spritePtr = LP::SetSprite(spriteArray, 80, 48, 8, 6, LoadImage::wolf);
 }
 
 Playscene::~Playscene()
@@ -27,7 +28,7 @@ void Playscene::Init()
 
 void Playscene::Update()
 {
-    if (Input::GetButtonDown(Keyboard::Left))
+    if (Input::GetButton(Keyboard::Left))
     {
         x -= 10;
     }
@@ -45,11 +46,16 @@ void Playscene::Update()
     }
 
     rX += 1;
+
+    delayCount++;
+    if (delayCount % 10 == 0 ) spriteAnimationCount++;
+    if (spriteAnimationCount > 7) spriteAnimationCount = 0;
 }
 
 void Playscene::Draw()
 {
     //LP::DrawCircle(x, y, 100, Color::Green, circle);
     LP::DrawRectangle(rX, rY, 50, Color::Blue, rectangle);
-    LP::DrawSprite(x, y, sprite);
+    //LP::DrawSprite(x, y, sprite);
+    LP::DrawSprite(x, y, spritePtr[spriteAnimationCount]);
 }

@@ -21,6 +21,10 @@ private:
     int circle;
     int rectangle;
     int sprite;
+    int spriteArray[48];
+    int* spritePtr;
+    int spriteAnimationCount = -1;
+    int delayCount = 0;
     int rX = 0;
     int rY = 300;
 };

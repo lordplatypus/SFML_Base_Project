@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <stack>
+#include <list>
 
 class LP
 {
@@ -18,8 +19,9 @@ public:
     static void DrawRectangle(int key);
     static void DrawRectangle(int x, int y, int size, sf::Color color, int key);
     //Drawing Sprites
-    static int SetTexture(std::string filePath, int x, int y, int width, int height);
+    static int SetTexture(std::string filePath, int width, int height);
     static int SetSprite(int x, int y, int textureKey);
+    static int* SetSprite(int* spriteArray, int cellWidth, int cellHeight, int numOfColumns, int numOfRows, int textureKey);
     static void DrawSprite(int x, int y, int key);
     //Draw
     static void Draw(sf::RenderWindow *window);

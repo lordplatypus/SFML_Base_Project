@@ -70,11 +70,11 @@ void LP::DrawRectangle(int x, int y, int size, sf::Color color, int key)
 
 
 //Drawing Sprites
-int LP::SetTexture(string filePath, int x, int y, int width, int height)
+int LP::SetTexture(string filePath, int width, int height)
 {
     key++;
     Texture temp;
-    temp.loadFromFile(filePath, IntRect(x, y, width, height));
+    temp.loadFromFile(filePath, IntRect(0, 0, width, height));
     textureMap[key] = temp;
     return key;
 }
@@ -87,6 +87,25 @@ int LP::SetSprite(int x, int y, int textureKey)
     temp.setPosition(x, y);
     spriteMap[key] = temp;
     return key;
+}
+
+int* LP::SetSprite(int* spriteArray, int cellWidth, int cellHeight, int numOfColumns, int numOfRows, int textureKey)
+{
+    int count = 0;
+    for (int i = 0; i < numOfRows; i++)
+    {
+        for (int j = 0; j < numOfColumns; j++)
+        {
+            key++;
+            Sprite temp;
+            temp.setTexture(textureMap[textureKey]);
+            temp.setTextureRect(IntRect(cellWidth * j, cellHeight * i, cellWidth, cellHeight));
+            spriteMap[key] = temp;
+            spriteArray[count] = key;
+            count++;
+        }
+    }
+    return spriteArray;
 }
 
 void LP::DrawSprite(int x, int y, int key)

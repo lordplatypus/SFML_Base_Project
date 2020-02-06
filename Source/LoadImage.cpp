@@ -14,5 +14,5 @@ LoadImage::~LoadImage()
 
 void LoadImage::Load()
 {
-    wolf = LP::SetTexture("/home/bryce/Documents/SFML/SFML_First_Project/Images/80x48Wolf_Idle.png", 0, 0, 80, 48);
+    wolf = LP::SetTexture("/home/bryce/Documents/SFML/SFML_First_Project/Images/80x48Wolf_FullSheet.png", 640, 288);
 }
