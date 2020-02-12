@@ -2,7 +2,7 @@
 #define LP_H_
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include <stack>
+#include <queue>
 #include <list>
 
 class LP
@@ -37,7 +37,7 @@ public:
 
 private:
     static int key;
-    static std::stack<int> thingsToDraw;
+    static std::queue<int> thingsToDraw;
 
     static std::map<int, sf::CircleShape> circleMap;
     static std::map<int, sf::RectangleShape> rectangleMap;

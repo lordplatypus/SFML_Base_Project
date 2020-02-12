@@ -11,7 +11,7 @@
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "/home/bryce/Documents/SFML/SFML_First_Project/"
+                "cwd": "/home/bryce/Documents/SFML/SFML_Base_Project/"
             }
         }
     ],

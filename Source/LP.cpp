@@ -1,12 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "/home/bryce/Documents/SFML/Action_Game/Headers/Game.h"
-#include "/home/bryce/Documents/SFML/Action_Game/Headers/LP.h"
+#include "/home/bryce/Documents/SFML/SFML_Base_Project/Headers/Game.h"
+#include "/home/bryce/Documents/SFML/SFML_Base_Project/Headers/LP.h"
 using namespace std;
 using namespace sf;
 
 int LP::key = -1; //creates keys to use in the below maps
-stack<int> LP::thingsToDraw; //list of ints (keys) used to know what to draw
+queue<int> LP::thingsToDraw; //list of ints (keys) used to know what to draw
 map<int, RectangleShape> LP::rectangleMap; //map of rectangles
 map<int, CircleShape> LP::circleMap; //map of circles
 map<int, Texture> LP::textureMap;
@@ -177,17 +177,17 @@ void LP::Draw(RenderWindow *window)
         int numOfThingsToDraw = thingsToDraw.size(); //save the num of things to draw
         for (int i = 0; i < numOfThingsToDraw; i++)
         {
-            if (circleMap.find(thingsToDraw.top()) != circleMap.end())
+            if (circleMap.find(thingsToDraw.front()) != circleMap.end())
             {//if the circleMap contains the key draw the circle
-                window->draw(circleMap[thingsToDraw.top()]);
+                window->draw(circleMap[thingsToDraw.front()]);
             }
-            else if (rectangleMap.find(thingsToDraw.top()) != rectangleMap.end())
+            else if (rectangleMap.find(thingsToDraw.front()) != rectangleMap.end())
             {//if the rectangleMap contains the key, draw the rectangle
-                window->draw(rectangleMap[thingsToDraw.top()]);
+                window->draw(rectangleMap[thingsToDraw.front()]);
             }
-            else if (spriteMap.find(thingsToDraw.top()) != spriteMap.end())
+            else if (spriteMap.find(thingsToDraw.front()) != spriteMap.end())
             {
-                window->draw(spriteMap[thingsToDraw.top()]);
+                window->draw(spriteMap[thingsToDraw.front()]);
             }
             thingsToDraw.pop(); //remove the key from the list
         }
@@ -200,6 +200,4 @@ void LP::DeleteAll()
 {
     circleMap.clear();
     rectangleMap.clear();
-    //textureMap.clear();
-    //spriteMap.clear();
 }

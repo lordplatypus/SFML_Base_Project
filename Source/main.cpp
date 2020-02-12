@@ -1,9 +1,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/LP.h"
-#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Game.h"
-#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Camera.h"
+#include "/home/bryce/Documents/SFML/SFML_Base_Project/Headers/LP.h"
+#include "/home/bryce/Documents/SFML/SFML_Base_Project/Headers/Game.h"
+#include "/home/bryce/Documents/SFML/SFML_Base_Project/Headers/Camera.h"
 using namespace sf;
 using namespace std;
 

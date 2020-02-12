@@ -1,7 +1,7 @@
 #include <iostream>
-#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Titlescene.h"
-#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Playscene.h"
-#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Game.h"
+#include "/home/bryce/Documents/SFML/SFML_Base_Project/Headers/Titlescene.h"
+#include "/home/bryce/Documents/SFML/SFML_Base_Project/Headers/Playscene.h"
+#include "/home/bryce/Documents/SFML/SFML_Base_Project/Headers/Game.h"
 
 Titlescene::Titlescene()
 {

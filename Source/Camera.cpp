@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <math.h>
-#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Camera.h"
+#include "/home/bryce/Documents/SFML/SFML_Base_Project/Headers/Camera.h"
 using namespace std;
 using namespace sf;
 
