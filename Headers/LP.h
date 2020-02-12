@@ -15,16 +15,25 @@ public:
     static void DrawCircle(int key);
     static void DrawCircle(int x, int y, int radius, sf::Color color, int key);
     //Drawing Rectangles
-    static int SetRectangle(int x, int y, int size, sf::Color color);
+    static int SetRectangle(int x, int y, int width, int height, sf::Color color);
     static void DrawRectangle(int key);
-    static void DrawRectangle(int x, int y, int size, sf::Color color, int key);
+    static void DrawRectangle(int x, int y, int key);
+    static void DrawRectangle(float x, float y, int key);
+    static void DrawRectangle(int x, int y, int width, int height, sf::Color color, int key);
+    static void DrawRectangle(float x, float y, int width, int height, sf::Color color, int key);
     //Drawing Sprites
     static int SetTexture(std::string filePath, int width, int height);
+    static int SetSprite(int textureKey);
     static int SetSprite(int x, int y, int textureKey);
-    static int* SetSprite(int* spriteArray, int cellWidth, int cellHeight, int numOfColumns, int numOfRows, int textureKey);
-    static void DrawSprite(int x, int y, int key);
+    static int SetSprite(int x, int y, int cellWidth, int cellHeight, int cellNum, int textureKey);
+    static std::vector<int> SetSprite(int cellWidth, int cellHeight, int numOfColumns, int numOfRows, int textureKey);
+    static void DrawSprite(int x, int y, bool flip, int key);
+    static void DrawSprite(float x, float y, bool flip, int key);
+    static void DrawSprite(int key);
     //Draw
     static void Draw(sf::RenderWindow *window);
+    //Delete
+    static void DeleteAll();
 
 private:
     static int key;

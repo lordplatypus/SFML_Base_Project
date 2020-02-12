@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/Game.h"
-#include "/home/bryce/Documents/SFML/SFML_First_Project/Headers/LP.h"
+#include "/home/bryce/Documents/SFML/Action_Game/Headers/Game.h"
+#include "/home/bryce/Documents/SFML/Action_Game/Headers/LP.h"
 using namespace std;
 using namespace sf;
 
@@ -44,11 +44,11 @@ void LP::DrawCircle(int x, int y, int radius, sf::Color color, int key)
 
 
 //Drawing Rectangles
-int LP::SetRectangle(int x, int y, int size, sf::Color color)
+int LP::SetRectangle(int x, int y, int width, int height, sf::Color color)
 {
     key++;
     RectangleShape temp;
-    temp.setSize(Vector2<float>(size, size));
+    temp.setSize(Vector2<float>(width, height));
     temp.setPosition(x, y);
     temp.setFillColor(color);
     rectangleMap[key] = temp;
@@ -60,10 +60,30 @@ void LP::DrawRectangle(int key)
     thingsToDraw.push(key);
 }
 
-void LP::DrawRectangle(int x, int y, int size, sf::Color color, int key)
+void LP::DrawRectangle(int x, int y, int key)
 {
     rectangleMap[key].setPosition(x, y);
-    rectangleMap[key].setSize(Vector2<float>(size, size));
+    thingsToDraw.push(key);
+}
+
+void LP::DrawRectangle(float x, float y, int key)
+{
+    rectangleMap[key].setPosition(x, y);
+    thingsToDraw.push(key);
+}
+
+void LP::DrawRectangle(int x, int y, int width, int height, sf::Color color, int key)
+{
+    rectangleMap[key].setPosition(x, y);
+    rectangleMap[key].setSize(Vector2<float>(width, height));
+    rectangleMap[key].setFillColor(color);
+    thingsToDraw.push(key);
+}
+
+void LP::DrawRectangle(float x, float y, int width, int height, sf::Color color, int key)
+{
+    rectangleMap[key].setPosition(x, y);
+    rectangleMap[key].setSize(Vector2<float>(width, height));
     rectangleMap[key].setFillColor(color);
     thingsToDraw.push(key);
 }
@@ -89,9 +109,21 @@ int LP::SetSprite(int x, int y, int textureKey)
     return key;
 }
 
-int* LP::SetSprite(int* spriteArray, int cellWidth, int cellHeight, int numOfColumns, int numOfRows, int textureKey)
+int LP::SetSprite(int x, int y, int cellWidth, int cellHeight, int cellNum, int textureKey)
 {
-    int count = 0;
+    key++;
+    Sprite temp;
+    temp.setTexture(textureMap[textureKey]);
+    Vector2u textureSize = textureMap[textureKey].getSize();
+    temp.setTextureRect(IntRect(cellNum % (textureSize.x / cellWidth) * cellWidth, cellNum / (textureSize.x / cellWidth) * cellWidth, cellWidth, cellHeight));
+    temp.setPosition(x, y);
+    spriteMap[key] = temp;
+    return key;
+}
+
+vector<int> LP::SetSprite(int cellWidth, int cellHeight, int numOfColumns, int numOfRows, int textureKey)
+{
+    vector<int> spriteArray;
     for (int i = 0; i < numOfRows; i++)
     {
         for (int j = 0; j < numOfColumns; j++)
@@ -101,16 +133,38 @@ int* LP::SetSprite(int* spriteArray, int cellWidth, int cellHeight, int numOfCol
             temp.setTexture(textureMap[textureKey]);
             temp.setTextureRect(IntRect(cellWidth * j, cellHeight * i, cellWidth, cellHeight));
             spriteMap[key] = temp;
-            spriteArray[count] = key;
-            count++;
+            spriteArray.push_back(key);
         }
     }
     return spriteArray;
 }
 
-void LP::DrawSprite(int x, int y, int key)
+void LP::DrawSprite(int x, int y, bool flip, int key)
 {
     spriteMap[key].setPosition(x, y);
+    if (flip) spriteMap[key].setScale(-1, 1);
+    else spriteMap[key].setScale(1, 1);
+    thingsToDraw.push(key);
+}
+
+void LP::DrawSprite(float x, float y, bool flip, int key)
+{
+    spriteMap[key].setPosition(x, y);
+    if (flip) 
+    {
+        spriteMap[key].setScale(-1, 1);
+        spriteMap[key].setOrigin(spriteMap[key].getLocalBounds().width, 0);
+    }
+    else 
+    {
+        spriteMap[key].setScale(1, 1);
+        spriteMap[key].setOrigin(0, 0);
+    }
+    thingsToDraw.push(key);
+}
+
+void LP::DrawSprite(int key)
+{
     thingsToDraw.push(key);
 }
 
@@ -138,4 +192,14 @@ void LP::Draw(RenderWindow *window)
             thingsToDraw.pop(); //remove the key from the list
         }
     }
+}
+
+
+//Delete
+void LP::DeleteAll()
+{
+    circleMap.clear();
+    rectangleMap.clear();
+    //textureMap.clear();
+    //spriteMap.clear();
 }
